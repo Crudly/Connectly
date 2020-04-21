@@ -2,15 +2,28 @@
 
 namespace Crudly\Connectly;
 
-class Connectly
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Database\Eloquent\Model;
+
+class Connectly extends Model
 {
+
     /**
-     * Create a new Eloquent query builder instance.
+     * The attributes that are mass assignable.
      *
-     * @return void
+     * @var array
      */
-    public function __construct()
-    {
-        dd('Yes');
+    protected $fillable = [
+        'credentials'
+    ];
+
+    /**
+     * Encrypts credtials ..
+     *
+     * @var string
+     */
+    public function storeCredentials(String $credentials) {
+    	return Crypt::encryptString($credentials);
     }
+
 }

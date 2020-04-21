@@ -12,7 +12,7 @@
     "homepage": "https://github.com/crudly/connectly",
     "keywords": ["Laravel", "CRUD", "DB"],
     "require": {
-        
+        "laravel/framework": "^7.0"
     },
     "require-dev": {
     },
@@ -27,6 +27,11 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
-        }
+        },
+        "laravel": {
+	        "providers": [
+	            "Crudly\\Connectly\\Provider"
+	        ]
+	    }
     }
 }
