@@ -28,22 +28,7 @@ class Provider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/connectly.php', 'provider');
-
-        // Register the service the package provides.
-        $this->app->singleton('provider', function ($app) {
-            return new Provider;
-        });
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return ['provider'];
+        $this->mergeConfigFrom(__DIR__.'/../config/connectly.php', 'connectly');
     }
     
     /**
@@ -56,6 +41,6 @@ class Provider extends ServiceProvider
         // Publishing the configuration file.
         $this->publishes([
             __DIR__.'/../config/connectly.php' => config_path('connectly.php'),
-        ], 'connectly.config');
+        ]);
     }
 }

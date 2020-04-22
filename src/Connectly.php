@@ -14,16 +14,29 @@ class Connectly extends Model
      * @var array
      */
     protected $fillable = [
-        'credentials'
+        'config'
+    ];
+
+    protected $hidden = [
+        'config'
     ];
 
     /**
-     * Encrypts credtials ..
+     * Encrypts connection config 
      *
-     * @var string
+     * @var
      */
-    public function storeCredentials(String $credentials) {
-    	return Crypt::encryptString($credentials);
+    public function setConfigAttribute($value) {
+    	return encrypt($value);
+    }
+
+    /**
+     * Decrypts connection config 
+     *
+     * @var
+     */
+    public function getConfigAttribute($value) {
+        return decrypt($value);
     }
 
 }
