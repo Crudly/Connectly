@@ -15,10 +15,13 @@
         "laravel/framework": "^7.0"
     },
     "require-dev": {
+        "phpunit/phpunit": "^9.1",
+        "orchestra/testbench": "^5.1"
     },
     "autoload": {
         "psr-4": {
-            "Crudly\\Connectly\\": "src"
+            "Crudly\\Connectly\\": "src",
+            "Crudly\\Connectly\\Tests\\": "tests"
         }
     },
     "autoload-dev": {
