@@ -6,7 +6,7 @@ use Crudly\Connectly\Provider;
 
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
-abstract class TestCase extends Orchestra\Testbench\TestCase
+abstract class TestCase extends OrchestraTestCase
 {
     /**
      * Load package service provider
