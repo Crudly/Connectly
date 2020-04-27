@@ -39,10 +39,10 @@ class ConnectionCreationTest extends TestCase
 		$connection = $connectly->connect();
 
         $this->assertInstanceOf(MySqlConnection::class, $connection);
-        $this->assertSame('mysql', $connection->getDriverName());
-		$this->assertSame('connectly_test_base', $connection->getDatabaseName());
+        $this->assertSame('mysql', $connectly->getDriverName());
+		$this->assertSame('connectly_test_base', $connectly->getDatabaseName());
 		
-		$config = $connection->getConfig();
+		$config = $connectly->getConfig();
 
 		foreach ($this->mysql as $key => $value)
 		{

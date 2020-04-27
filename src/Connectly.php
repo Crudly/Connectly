@@ -4,6 +4,7 @@ namespace Crudly\Connectly;
 
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\MySqlConnection;
 
 class Connectly extends Model
 {
@@ -19,6 +20,15 @@ class Connectly extends Model
 
     protected $hidden = [
         'config'
+    ];
+
+    public $config = [
+        'driver'    => '',
+        'host'      => '',
+        'port'      => '',
+        'database'  => '',
+        'username'  => '',
+        'password'  => '',
     ];
 
     /**
@@ -39,4 +49,53 @@ class Connectly extends Model
         return decrypt($value);
     }
 
+    /**
+     * Creates connection
+     *
+     * @return Illuminate\Database\MySqlConnection
+     */
+    public function connect() {
+        return new MySqlConnection($this->config);
+    }
+
+    /**
+     * Get an option from the configuration options.
+     *
+     * @param  string|null  $option
+     * @return mixed
+     */
+    public function getConfigKeyValue($option = null)
+    {
+        return \Arr::get($this->config, $option);
+    }
+
+    /**
+     * Get the driver name.
+     *
+     * @return string
+     */
+    public function getDriverName()
+    {
+        return $this->getConfigKeyValue('driver');
+    }
+
+    /**
+     * Get the database name.
+     *
+     * @return string
+     */
+    public function getDatabaseName()
+    {
+        return $this->getConfigKeyValue('database');
+    }
+
+    /**
+     * Get the database name.
+     *
+     * @return string
+     */
+    public function getConfig()
+    {
+        return $this->config;
+    }
 }
