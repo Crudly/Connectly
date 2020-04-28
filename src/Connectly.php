@@ -40,9 +40,9 @@ class Connectly extends Model
     }
 
     /**
-     * Creates connection
+     * Establish a PDO connection based on the configuration.
      *
-     * @return Illuminate\Database\
+     * @return \Illuminate\Database\Connection
      */
     public function connect() {
         $connection = resolve(ConnectionFactory::class);
