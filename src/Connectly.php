@@ -2,7 +2,6 @@
 
 namespace Crudly\Connectly;
 
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Connectors\ConnectionFactory;
 
@@ -22,24 +21,13 @@ class Connectly extends Model
         'config'
     ];
 
-    public $config = [ ];
-
-    protected $sampleConfig = [
-        'driver'    => '',
-        'host'      => '',
-        'port'      => '',
-        'database'  => 'connectly_test_base',
-        'username'  => '',
-        'password'  => '',
-    ];
-
     /**
      * Encrypts connection config 
      *
      * @var
      */
     public function setConfigAttribute($value) {
-    	return encrypt($value);
+        $this->attributes['config'] = encrypt($value);
     }
 
     /**
@@ -54,52 +42,11 @@ class Connectly extends Model
     /**
      * Creates connection
      *
-     * @return Illuminate\Database\MySqlConnection
+     * @return Illuminate\Database\
      */
     public function connect() {
-        $connection = new ConnectionFactory(app());
+        $connection = resolve(ConnectionFactory::class);
 
-        return $connection->make(array_merge($this->sampleConfig, $this->config));
-    }
-
-    /**
-     * Get an option from the configuration options.
-     *
-     * @param  string|null  $option
-     * @return mixed
-     */
-    public function getConfigKeyValue($option = null)
-    {
-        return \Arr::get($this->config, $option);
-    }
-
-    /**
-     * Get the driver name.
-     *
-     * @return string
-     */
-    public function getDriverName()
-    {
-        return $this->getConfigKeyValue('driver');
-    }
-
-    /**
-     * Get the database name.
-     *
-     * @return string
-     */
-    public function getDatabaseName()
-    {
-        return $this->getConfigKeyValue('database');
-    }
-
-    /**
-     * Get the connection config.
-     *
-     * @return string
-     */
-    public function getConfig()
-    {
-        return $this->config;
+        return $connection->make($this->config);
     }
 }
