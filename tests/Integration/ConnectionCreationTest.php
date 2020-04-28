@@ -47,6 +47,7 @@ class ConnectionCreationTest extends TestCase
 
 		$this->sqlite = [
 			'driver' => 'sqlite',
+			'database' => 'connectly_test_base',
 		];
 	}
 	
