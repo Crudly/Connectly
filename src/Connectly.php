@@ -4,7 +4,7 @@ namespace Crudly\Connectly;
 
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\MySqlConnection;
+use Illuminate\Database\Connectors\ConnectionFactory;
 
 class Connectly extends Model
 {
@@ -22,11 +22,13 @@ class Connectly extends Model
         'config'
     ];
 
-    public $config = [
+    public $config = [ ];
+
+    protected $sampleConfig = [
         'driver'    => '',
         'host'      => '',
         'port'      => '',
-        'database'  => '',
+        'database'  => 'connectly_test_base',
         'username'  => '',
         'password'  => '',
     ];
@@ -55,7 +57,9 @@ class Connectly extends Model
      * @return Illuminate\Database\MySqlConnection
      */
     public function connect() {
-        return new MySqlConnection($this->config);
+        $connection = new ConnectionFactory(app());
+
+        return $connection->make(array_merge($this->sampleConfig, $this->config));
     }
 
     /**
@@ -90,7 +94,7 @@ class Connectly extends Model
     }
 
     /**
-     * Get the database name.
+     * Get the connection config.
      *
      * @return string
      */
