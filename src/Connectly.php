@@ -7,7 +7,6 @@ use Illuminate\Database\Connectors\ConnectionFactory;
 
 class Connectly extends Model
 {
-
     /**
      * The attributes that are mass assignable.
      *
@@ -22,7 +21,7 @@ class Connectly extends Model
     ];
 
     /**
-     * Encrypts connection config 
+     * Encrypts connection config
      *
      * @var
      */
@@ -31,7 +30,7 @@ class Connectly extends Model
     }
 
     /**
-     * Decrypts connection config 
+     * Decrypts connection config
      *
      * @var
      */
