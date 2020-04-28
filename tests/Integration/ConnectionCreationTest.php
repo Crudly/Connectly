@@ -12,7 +12,10 @@ use Illuminate\Database\SQLiteConnection;
 
 class ConnectionCreationTest extends TestCase
 {
-	protected $config;
+	protected $mysql;
+	protected $pgsql;
+	protected $sqlsrv;
+	protected $sqlite;
 
     protected function setUp(): void
     {
