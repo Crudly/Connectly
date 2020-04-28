@@ -16,6 +16,11 @@ class Connectly extends Model
         'config'
     ];
 
+    /**
+     * The attributes that hidden from JSON serialization.
+     *
+     * @var array
+     */
     protected $hidden = [
         'config'
     ];
@@ -23,7 +28,8 @@ class Connectly extends Model
     /**
      * Encrypts connection config
      *
-     * @var
+     * @param  array  $value
+     * @return void
      */
     public function setConfigAttribute($value) {
         $this->attributes['config'] = encrypt($value);
@@ -32,7 +38,8 @@ class Connectly extends Model
     /**
      * Decrypts connection config
      *
-     * @var
+     * @param  string  $value
+     * @return array
      */
     public function getConfigAttribute($value) {
         return decrypt($value);
