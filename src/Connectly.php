@@ -2,6 +2,7 @@
 
 namespace Crudly\Connectly;
 
+use Crudly\Encrypted\Encrypted;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Connectors\ConnectionFactory;
 
@@ -26,24 +27,13 @@ class Connectly extends Model
     ];
 
     /**
-     * Encrypts connection config
+     * Make config encrypted.
      *
-     * @param  array  $value
-     * @return void
+     * @var array
      */
-    public function setConfigAttribute($value) {
-        $this->attributes['config'] = encrypt($value);
-    }
-
-    /**
-     * Decrypts connection config
-     *
-     * @param  string  $value
-     * @return array
-     */
-    public function getConfigAttribute($value) {
-        return decrypt($value);
-    }
+    protected $casts = [
+        'config' => Encrypted::class,
+    ];
 
     /**
      * Establish a PDO connection based on the configuration.

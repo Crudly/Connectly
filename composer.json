@@ -12,7 +12,8 @@
     "homepage": "https://github.com/crudly/connectly",
     "keywords": ["Laravel", "CRUD", "DB"],
     "require": {
-        "laravel/framework": "^7.0"
+        "laravel/framework": "^7.0",
+        "crudly/encrypted": "^1.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0",
