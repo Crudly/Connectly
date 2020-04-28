@@ -24,7 +24,9 @@
         }
     },
     "autoload-dev": {
-        "Crudly\\Connectly\\Tests\\": "tests"
+		"psr-4": {
+        	"Crudly\\Connectly\\Tests\\": "tests"
+		}
     },
     "extra": {
         "laravel": {
