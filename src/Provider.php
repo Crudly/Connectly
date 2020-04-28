@@ -14,33 +14,5 @@ class Provider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-
-        // Publishing is only necessary when using the CLI.
-        if ($this->app->runningInConsole()) {
-            $this->bootForConsole();
-        }
-    }
-
-    /**
-     * Register any package services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->mergeConfigFrom(__DIR__.'/../config/connectly.php', 'connectly');
-    }
-    
-    /**
-     * Console-specific booting.
-     *
-     * @return void
-     */
-    protected function bootForConsole()
-    {
-        // Publishing the configuration file.
-        $this->publishes([
-            __DIR__.'/../config/connectly.php' => config_path('connectly.php'),
-        ]);
     }
 }

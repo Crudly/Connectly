@@ -4,9 +4,9 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Larzs",
-            "email": "wester@inbox.lv",
-            "homepage": "https://github.com/orgs/crudly/people/Larzs"
+            "name": "Gatis Supulnieks",
+            "email": "gatis@glaive.pro",
+            "homepage": "https://github.com/Larzs"
         }
     ],
     "homepage": "https://github.com/crudly/connectly",
@@ -20,17 +20,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Crudly\\Connectly\\": "src",
-            "Crudly\\Connectly\\Tests\\": "tests"
+            "Crudly\\Connectly\\": "src"
         }
     },
     "autoload-dev": {
-
+        "Crudly\\Connectly\\Tests\\": "tests"
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        },
         "laravel": {
 	        "providers": [
 	            "Crudly\\Connectly\\Provider"
