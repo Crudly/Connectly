@@ -15,6 +15,7 @@ class CreateCrudlyConnectliesTable extends Migration
     {
         Schema::create('crudly_connectlies', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
             $table->text('config');
             $table->timestamps();
         });
