@@ -14,7 +14,8 @@ class Connectly extends Model
      * @var array
      */
     protected $fillable = [
-        'config'
+        'config',
+		'name',
     ];
 
     /**
