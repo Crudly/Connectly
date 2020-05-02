@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1
+
+### Changed
+- Name is fillable.
+
 ## 1.1.0
 
 ### Added
