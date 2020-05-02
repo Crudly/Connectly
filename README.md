@@ -8,17 +8,21 @@ Store database connections on the database :) Everything encrypted.
 
 ```php
 $connectly = Connectly::create([
-	'driver' => 'mysql',
-	'host' => '127.0.0.1',
-	'port' => '3306',
-	'database' => 'connectly_test_base',
-	'username' => 'connectly_user',
-	'password' => 'hunter2',
+	'name' => 'My connection',
+	'config' => [
+		'driver' => 'mysql',
+		'host' => '127.0.0.1',
+		'port' => '3306',
+		'database' => 'connectly_test_base',
+		'username' => 'connectly_user',
+		'password' => 'hunter2',
+	],
 ]);
 
-$connection = $connectly->connect();
+$myCon = Connectly::where('name', 'My connection')->first();
 
-// This is a Laravel DB connection
+$connection = $myCon->connect();   // This is a Laravel DB connection
+
 $connection->table('users')->get();
 ```
 
